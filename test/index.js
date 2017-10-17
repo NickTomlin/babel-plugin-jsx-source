@@ -4,5 +4,19 @@ const plugin = require('..')
 
 babelPluginTester({
   plugin,
-  fixtures: path.join(__dirname, 'fixtures')
+  filename: __filename,
+  // unfortunately we can't mix and match fixtures and tests
+  tests: {
+    'It adds a __source__ attribute to example components with the code of it\'s children': {
+      fixture: 'fixtures/basic/code.js',
+      outputFixture: 'fixtures/basic/output.js'
+    },
+    'It accepts custom element names through plugin options': {
+      pluginOptions: {
+        elementName: 'CustomElementName'
+      },
+      fixture: 'fixtures/element-name/code.js',
+      outputFixture: 'fixtures/element-name/output.js'
+    }
+  }
 })

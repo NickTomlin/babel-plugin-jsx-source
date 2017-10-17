@@ -1,45 +1,26 @@
+const defaults = { elementName: 'JSXExample' }
+
 module.exports = function (babel) {
   const { types: t } = babel;
-
   return {
+    name: 'jsx-source-code-transform',
+    inherits: require('babel-plugin-syntax-jsx'),
     visitor: {
       JSXElement: {
-        enter () {
-          console.log(arguments)
-        },
-
-        // exit allows us to get the source file
-        // and grab the original source
-        // ala https://github.com/khc/babel-plugin-transform-jsx-html/blob/master/index.js
-        // but I'm not sure this is actually the best way
-        exit (path, context) {
-          if (path.node.openingElement.name.name !== 'JSXExample') { return}
+        exit (path, state) {
+          const elementName = (state.opts.elementName || defaults.elementName)
+          if (path.node.openingElement.name.name !== elementName) { return }
+          if (path.node.children.length === 0) { return }
 
           const start = path.node.children[0].start
           const end = path.node.children[path.node.children.length -1].end
+          const code = (state.file && state.file.code || '')
+            .substring(start, end)
+            .trim()
 
-          console.log(context.file.code.substring(start, end).trim())
-
-          // what we want is a JSX element that has the source code within a PRE tag
-          t.JSXElement(
-            t.JSXOpeningElement(t.JSXIdentifier('pre'), [], false),
-            t.JSXClosingElement(t.JSXIdentifier('pre')),
-            [
-              t.JSXElement(
-                t.JSXOpeningElement(t.JSXIdentifier('code'), [], false),
-                t.JSXClosingElement(t.JSXIdentifier('code')),
-                [],
-              )
-            ]
+          path.node.openingElement.attributes.push(
+            t.JSXAttribute(t.JSXIdentifier('__source__'), t.StringLiteral(code))
           )
-
-          const wrapper = t.JSXElement(
-            t.JSXOpeningElement(t.JSXIdentifier('div'), [], false),
-            t.JSXClosingElement(t.JSXIdentifier('div')),
-            path.node.children
-          )
-
-          path.replaceWith(wrapper)
         }
       }
     }
