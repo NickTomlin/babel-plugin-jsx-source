@@ -1,5 +1,5 @@
 {
-  "name": "babel-plugin-jsx-source",
+  "name": "@nicktomlin/babel-plugin-jsx-source",
   "version": "1.0.0-alpha.1",
   "description": "Transform to provide source code for",
   "main": "index.js",
