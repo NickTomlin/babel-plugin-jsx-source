@@ -3,7 +3,7 @@ const defaults = { elementName: 'JSXExample' }
 module.exports = function (babel) {
   const { types: t } = babel;
   return {
-    name: 'jsx-source-code-transform',
+    name: 'jsx-source',
     inherits: require('babel-plugin-syntax-jsx'),
     visitor: {
       JSXElement: {

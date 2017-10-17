@@ -1,13 +1,13 @@
 {
-  "name": "babel-plugin-react-example",
-  "version": "1.0.0",
-  "description": "",
+  "name": "babel-plugin-jsx-source",
+  "version": "1.0.0-alpha.1",
+  "description": "Transform to provide source code for",
   "main": "index.js",
   "scripts": {
     "test": "mocha test/index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Nick Tomlin <nick.tomlin@gmail.com>",
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
