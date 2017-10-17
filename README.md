@@ -11,12 +11,12 @@ npm install --save-dev @nicktomlin/babel-plugin-jsx-source
 ```
 
 
-```json
+```javascript
 // .bablerc
 // add 'jsx-source' to your babel plugins
 
 {
-  plugins: ["jsx-source"]
+  "plugins": ['jsx-source']
 }
 
 ```
