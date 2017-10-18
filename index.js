@@ -19,7 +19,7 @@ module.exports = function (babel) {
             .trim()
 
           path.node.openingElement.attributes.push(
-            t.JSXAttribute(t.JSXIdentifier('__source__'), t.StringLiteral(code))
+            t.JSXAttribute(t.JSXIdentifier('__code__'), t.StringLiteral(code))
           )
         }
       }

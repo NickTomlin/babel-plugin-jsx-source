@@ -7,7 +7,7 @@ babelPluginTester({
   filename: __filename,
   // unfortunately we can't mix and match fixtures and tests
   tests: {
-    'It adds a __source__ attribute to example components with the code of it\'s children': {
+    'It adds a __code__ attribute to example components with the code of it\'s children': {
       fixture: 'fixtures/basic/code.js',
       outputFixture: 'fixtures/basic/output.js'
     },

@@ -33,11 +33,11 @@ npm install --save-dev @nicktomlin/babel-plugin-jsx-source
 Becomes:
 
 ```jsx
-<JSXExample __source__="<MyComponent className=\"test\">\n    <p>Hello</p>\n  </MyComponent>">
+<JSXExample __code__="<MyComponent className=\"test\">\n    <p>Hello</p>\n  </MyComponent>">
   <MyComponent className="test">
     <p>Hello</p>
   </MyComponent>
 </JSXExample>;
 ```
 
-You can use this within your component to run the `__source__` prop through a syntax highlighter like [highligh.js](https://highlightjs.org/) or [prism.js](http://prismjs.com/).
+You can use this within your component to run the `__code__` prop through a syntax highlighter like [highligh.js](https://highlightjs.org/) or [prism.js](http://prismjs.com/).
